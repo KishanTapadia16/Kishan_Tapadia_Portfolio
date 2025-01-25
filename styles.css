@@ -41,13 +41,11 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-    transition: transform 0.3s ease !important;
-    will-change: transform;
+    transition: transform 0.3s ease;
 }
 
 .nav-hidden {
-    transform: translateY(-100%) !important;
+    transform: translateY(-100%);
 }
 
 header.scrolled {

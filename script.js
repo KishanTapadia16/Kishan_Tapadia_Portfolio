@@ -1,35 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let lastScrollTop = 0;
     const header = document.querySelector('header');
-    const threshold = 100; // minimum scroll before hiding
-    let ticking = false;
-
-    function handleScroll() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Only hide header after scrolling down threshold amount
-        if (scrollTop > threshold) {
-            if (scrollTop > lastScrollTop) {
-                // Scrolling down
-                header.classList.add('nav-hidden');
-            } else {
-                // Scrolling up
-                header.classList.remove('nav-hidden');
-            }
-        } else {
-            header.classList.remove('nav-hidden');
-        }
-
-        lastScrollTop = scrollTop;
-        ticking = false;
-    }
-
+    let prevScrollPos = window.pageYOffset;
+    
     window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                handleScroll();
-            });
-            ticking = true;
+        const currentScrollPos = window.pageYOffset;
+        
+        // Show navbar only when at the very top
+        if (currentScrollPos === 0) {
+            header.classList.remove('nav-hidden');
+        } else {
+            header.classList.add('nav-hidden');
         }
-    }, { passive: true });
+        
+        prevScrollPos = currentScrollPos;
+    });
 }); 
