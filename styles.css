@@ -132,32 +132,77 @@ nav ul li a.active::after {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .animated-text {
-        font-size: 1.2rem;
+    /* Adjust container padding */
+    .container {
+        padding: 0 15px;
+        margin: 0 auto;
     }
 
-    nav ul {
-        gap: 2rem;
+    /* Adjust text sizing */
+    .about-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
     }
 
-    nav ul li a {
-        font-size: 0.9rem;
+    /* Fix header spacing */
+    header {
+        padding: 0.8rem 0;
     }
-}
 
-@media (max-width: 480px) {
+    /* Adjust main title */
+    .main-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Section spacing */
+    section {
+        padding: 2rem 0;
+    }
+
+    .hero {
+        padding: 60px 0 30px;
+    }
+
+    /* About content layout */
+    .about-content {
+        display: block;
+        padding: 0;
+    }
+
+    .about-text-container {
+        width: 100%;
+        padding: 0;
+    }
+
+    /* Navigation adjustments */
     nav {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 10px;
-    }
-
-    nav ul {
-        gap: 1.5rem;
+        padding: 0 15px;
     }
 
     .animated-text {
         font-size: 1.1rem;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+    .about-text {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 1.5rem 0;
+    }
+
+    .container {
+        padding: 0 12px;
     }
 }
 
