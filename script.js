@@ -1,21 +1,35 @@
-let lastScroll = 0;
-const header = document.querySelector('header');
+document.addEventListener('DOMContentLoaded', function() {
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const threshold = 100; // minimum scroll before hiding
+    let ticking = false;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-        header.classList.remove('nav-hidden');
-        return;
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Only hide header after scrolling down threshold amount
+        if (scrollTop > threshold) {
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                header.classList.add('nav-hidden');
+            } else {
+                // Scrolling up
+                header.classList.remove('nav-hidden');
+            }
+        } else {
+            header.classList.remove('nav-hidden');
+        }
+
+        lastScrollTop = scrollTop;
+        ticking = false;
     }
-    
-    if (currentScroll > lastScroll && !header.classList.contains('nav-hidden')) {
-        // Scrolling down
-        header.classList.add('nav-hidden');
-    } else if (currentScroll < lastScroll && header.classList.contains('nav-hidden')) {
-        // Scrolling up
-        header.classList.remove('nav-hidden');
-    }
-    
-    lastScroll = currentScroll;
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                handleScroll();
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 }); 

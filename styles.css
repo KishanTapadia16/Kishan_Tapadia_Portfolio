@@ -39,12 +39,14 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
     z-index: 1000;
     box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
     transition: transform 0.3s ease !important;
+    will-change: transform;
 }
 
-header.nav-hidden {
+.nav-hidden {
     transform: translateY(-100%) !important;
 }
 
@@ -891,11 +893,15 @@ section::after {
 
 /* Add padding to main content to prevent overlap */
 main {
-    padding-top: 80px; /* Adjust this value based on your header height */
+    padding-top: 80px;
 }
 
 @media (max-width: 768px) {
     main {
-        padding-top: 60px; /* Smaller padding for mobile */
+        padding-top: 60px;
+    }
+    
+    header {
+        padding: 0.8rem 0;
     }
 }
